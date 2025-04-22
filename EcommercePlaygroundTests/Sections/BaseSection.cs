@@ -1,5 +1,4 @@
-﻿using System;
-using EcommercePlaygroundTests.Extensions;
+﻿using EcommercePlaygroundTests.Extensions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
@@ -20,8 +19,8 @@ namespace EcommercePlaygroundTests.Sections
             JsExecutor = (IJavaScriptExecutor)Driver;
         }
 
-        protected abstract By MainElementBy { get; set; }
+        protected abstract By WrapperLocator { get; set; }
 
-        protected IWebElement MainElement => Driver.GetElementWhenVisible(MainElementBy);
+        protected IWebElement Wrapper => Driver.GetElementWhenVisible(WrapperLocator);
     }
 }

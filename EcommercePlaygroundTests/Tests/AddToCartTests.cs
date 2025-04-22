@@ -7,12 +7,17 @@ namespace EcommercePlaygroundTests.Tests
         [Test]
         public void AssertCartPopup_When_AddElementToCart()
         {
-            var product = ProductFactory.IMac106();
+            var imac = ProductFactory.IMac106();
+            var htc = ProductFactory.Htc28();
 
             HomePage.Open();
-            HomePage.Navigation.Search(product);
+            HomePage.Navigation.Search(imac);
+            SearchPage.AddToCart(imac);
+            SearchPage.Search(htc);
+            SearchPage.AddToCart(htc);
+            SearchPage.Navigation.ClickOnCartButton();
 
-            SearchPage.AddProductToCart(product);
+            SearchPage.CartPopUp.AssertCart(imac, htc);
         }
     }
 }
