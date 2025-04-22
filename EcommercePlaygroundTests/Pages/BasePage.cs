@@ -1,4 +1,5 @@
-﻿using EcommercePlaygroundTests.Sections;
+﻿using EcommercePlaygroundTests.Extensions;
+using EcommercePlaygroundTests.Sections;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
@@ -11,6 +12,8 @@ namespace EcommercePlaygroundTests.Pages
         protected WebDriverWait Wait { get; set; }
 
         public NavigationSection Navigation => new NavigationSection(Driver);
+
+        public CartSection CartPopUp => new CartSection(Driver);
 
         protected IJavaScriptExecutor JsExecutor { get; set; }
 
@@ -33,15 +36,7 @@ namespace EcommercePlaygroundTests.Pages
 
         protected virtual void WaitUntilPageLoaded()
         {
-            WaitUntilReady();
-        }
-
-        protected virtual void WaitUntilReady()
-        {
-            Wait.Until(d => {
-                var readyState = JsExecutor.ExecuteScript("return document.readyState").ToString();
-                return readyState == "complete";
-            });
+            Driver.WaitUntilReady();
         }
     }
 }
