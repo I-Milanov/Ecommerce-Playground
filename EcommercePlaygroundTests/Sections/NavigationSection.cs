@@ -12,7 +12,7 @@ namespace EcommercePlaygroundTests.Sections
 
         protected override By MainElementBy { get; set; } = By.XPath("//header[@class='header']");
 
-        public IWebElement SearchInput => MainElement.FindElement(By.XPath("//input[@name = 'search']"));
+        public IWebElement SearchInput => MainElement.FindElement(By.XPath(".//input[@name = 'search']"));
 
         public void Search(Product product)
         {

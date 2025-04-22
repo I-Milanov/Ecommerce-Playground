@@ -4,7 +4,7 @@ using OpenQA.Selenium.Support.UI;
 
 namespace EcommercePlaygroundTests.Pages
 {
-    public abstract class BaseSection
+    public abstract class BasePage
     {
         protected IWebDriver Driver { get; set; }
 
@@ -18,7 +18,7 @@ namespace EcommercePlaygroundTests.Pages
 
         public abstract string DomTitle { get; }
 
-        public BaseSection(IWebDriver driver)
+        public BasePage(IWebDriver driver)
         {
             Driver = driver;
             Wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));

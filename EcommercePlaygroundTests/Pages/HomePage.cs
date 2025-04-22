@@ -2,7 +2,7 @@
 
 namespace EcommercePlaygroundTests.Pages
 {
-    public class HomePage : BaseSection
+    public class HomePage : BasePage
     {
         public HomePage(IWebDriver driver) : base(driver)
         {

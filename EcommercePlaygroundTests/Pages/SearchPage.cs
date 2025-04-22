@@ -4,7 +4,7 @@ using OpenQA.Selenium;
 
 namespace EcommercePlaygroundTests.Pages
 {
-    public class SearchPage : BaseSection
+    public class SearchPage : BasePage
     {
         public SearchPage(IWebDriver driver) : base(driver)
         {
