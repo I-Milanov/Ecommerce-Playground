@@ -16,6 +16,7 @@ namespace EcommercePlaygroundTests.Sections
 
         public void Search(Product product)
         {
+            SearchInput.Clear();
             SearchInput.SendKeys(product.Name + Keys.Enter);
         }
     }
