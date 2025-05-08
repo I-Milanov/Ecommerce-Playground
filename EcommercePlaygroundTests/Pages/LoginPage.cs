@@ -15,7 +15,7 @@ namespace EcommercePlaygroundTests.Pages
 
         public override string DomTitle => "Account Login";
 
-        public Form<LoginFormModel> Form => Driver.GetElementWhenVisible(By.XPath($"//h2/following-sibling::form")).ToComponent<Form<LoginFormModel>>();
+        public Form<LoginFormModel> Form => Driver.FindElement(By.XPath($"//h2/following-sibling::form")).ToComponent<Form<LoginFormModel>>();
 
     }
 }

@@ -68,20 +68,20 @@ namespace EcommercePlaygroundTests.Pages
             product.Name = ProductCell(column).Text;
             product.Id = ProductCellLink(column).ExtractProductIdFromHref();
 
-            product.CompareImage = ImageCell(column).GetAttribute("src");
+            //product.CompareImage = ImageCell(column).GetAttribute("src");
 
-            if (PriceCell(column).Text.TryCurrencyToDecimal() is decimal price)
-            {
-                product.Price = price;
-            }
+            //if (PriceCell(column).Text.TryCurrencyToDecimal() is decimal price)
+            //{
+            //    product.Price = price;
+            //}
 
-            product.Model = ModelCell(column).Text;
-            product.Brand = BrandCell(column).Text;
-            product.Availability = AvailabilityCell(column).Text;
-            product.Summary = RatingCell(column).Text;
-            product.Summary = SummaryCell(column).Text;
-            product.Weight = WeightCell(column).Text;
-            product.Dimensions = DimensionsCell(column).Text;
+            //product.Model = ModelCell(column).Text;
+            //product.Brand = BrandCell(column).Text;
+            //product.Availability = AvailabilityCell(column).Text;
+            //product.Summary = RatingCell(column).Text;
+            //product.Summary = SummaryCell(column).Text;
+            //product.Weight = WeightCell(column).Text;
+            //product.Dimensions = DimensionsCell(column).Text;
 
             return product;
         }
