@@ -14,16 +14,34 @@ namespace EcommercePlaygroundTests.Pages
 
         public override string DomTitle => "Search";
 
-        public IWebElement ProductInGrid(Product product) =>
-            Driver.GetElementWhenVisible(By.XPath($"//div[@class='product-thumb' and .//a[contains(@href,'product_id={product.Id}')]]"));
+        public IWebElement SearchInput => Driver.GetElementWhenVisible(By.XPath($"//input[@id='input-search']"));
 
-        public IWebElement ShoppingCart(Product product) => 
-            ProductInGrid(product).FindElement(By.XPath(".//*[contains(concat(' ',normalize-space(@class),' '),' fa-shopping-cart ')]"));
+        public IWebElement SearchButton => Driver.GetElementWhenVisible(By.XPath($"//input[@id='button-search']"));
 
-        public void AddProductToCart(Product product)
+        public IWebElement ProductInGrid(Product product) => Driver.GetElementWhenVisible(By.XPath($"//div[@class='product-thumb' and .//a[contains(@href,'product_id={product.Id}')]]"));
+
+        public IWebElement AddToShoppingCartButton(Product product) => ProductInGrid(product).FindElement(By.XPath(".//*[contains(concat(' ',normalize-space(@class),' '),' fa-shopping-cart ')]"));
+
+        public IWebElement AddToCompareProductButton(Product product) => ProductInGrid(product).FindElement(By.XPath(".//*[contains(concat(' ',normalize-space(@class),' '),' fa-sync-alt ')]"));
+
+        public void AddToCart(Product product)
         {
             ProductInGrid(product).HoverTo();
-            ShoppingCart(product).Click();
+            AddToShoppingCartButton(product).Click();
+        }
+
+        public void AddToCompare(Product product)
+        {
+            ProductInGrid(product).HoverTo();
+            AddToCompareProductButton(product).Click();
+        }
+
+        public void Search(Product product)
+        {
+            SearchInput.Clear();
+            SearchInput.SendKeys(product.Name);
+            SearchButton.Click();
+            Driver.WaitUntilReady();
         }
     }
 }

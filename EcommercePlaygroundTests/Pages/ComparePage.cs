@@ -61,7 +61,7 @@ namespace EcommercePlaygroundTests.Pages
 
             return products;
         }
-        
+
         protected Product GetProduct(int column)
         {
             var product = new Product();
