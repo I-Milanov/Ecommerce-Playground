@@ -14,6 +14,10 @@ namespace EcommercePlaygroundTests.Tests
 
         public ComparePage ComparePage => new ComparePage(Driver);
 
+        public LoginPage LoginPage => new LoginPage(Driver);
+
+        public RegistrationPage RegistrationPage => new RegistrationPage(Driver);
+
         public virtual ChromeOptions GetChromeOptions()
         {
             ChromeOptions options = new ChromeOptions();

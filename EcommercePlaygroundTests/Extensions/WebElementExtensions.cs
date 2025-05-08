@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using EcommercePlaygroundTests.Components;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
@@ -7,6 +8,12 @@ namespace EcommercePlaygroundTests.Extensions
 {
     public static class WebElementExtensions
     {
+        public static TComponent ToComponent<TComponent>(this IWebElement element)
+            where TComponent : Component
+        {          
+            return (TComponent)Activator.CreateInstance(typeof(TComponent), element);
+        }
+
         public static IWebElement ScrollTo(this IWebElement element)
         {
             var driver = ((IWrapsDriver)element).WrappedDriver;
@@ -32,10 +39,6 @@ namespace EcommercePlaygroundTests.Extensions
             var href = element.GetAttribute("href");
             var queryParams = href.Split("?").Last().Split("&");
             var productIdParam = queryParams.First(p => p.StartsWith("product_id"));
-
-            var driver = ((IWrapsDriver)element).WrappedDriver;
-            Actions action = new Actions(driver);
-            action.MoveToElement(element).Perform();
 
             return int.Parse(productIdParam.Replace("product_id=", string.Empty));
         }
